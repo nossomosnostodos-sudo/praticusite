@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta - PRATICU</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+   min-height: 100vh;
+          font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #9333ea 100%);
+            min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        }
+
+        .cadastro-container {
+            width: 850px;
+            max-width: 100%;
+            min-height: 500px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 15px 40px rgba(55, 35, 100, 0.25);
+        }
+
+        /* LADO ROXO (WELCOME) */
+        .welcome {
+            width: 55%;
+            background: linear-gradient(145deg, #7450bd, #6542a8);
+            padding: 50px 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            z-index: 2;
+        }
+
+        .welcome p {
+            font-size: 14px;
+            max-width: 280px;
+            line-height: 1.6;
+            color: #ddd6fe;
+            z-index: 2;
+        }
+
+        /* ELEMENTOS DECORATIVOS GEOMÉTRICOS */
+        .welcome .plus {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.25);
+            font-weight: bold;
+            user-select: none;
+        }
+        .welcome .plus-1 { top: 30px; left: 40px; font-size: 20px; }
+        .welcome .plus-2 { top: 120px; right: 50px; font-size: 16px; }
+        .welcome .plus-3 { bottom: 40px; left: 80px; font-size: 18px; }
+
+        .welcome .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            pointer-events: none;
+        }
+        .welcome .circle-1 { width: 200px; height: 200px; bottom: -80px; right: -50px; }
+        .welcome .circle-2 { width: 300px; height: 300px; bottom: -130px; right: -100px; }
+
+        /* FORMULÁRIO */
+        .cadastro-form {
+            width: 45%;
+            padding: 50px 40px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cadastro-form h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            height: 42px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            border-radius: 8px;
+        }
+
+        .form-control:focus {
+            border-color: #7650b9;
+            box-shadow: 0 0 0 0.2rem rgba(118, 80, 185, 0.15);
+        }
+
+        .btn-cadastrar {
+            width: 100%;
+            height: 42px;
+            border: none;
+            border-radius: 21px;
+            background: linear-gradient(90deg, #7049b8, #865ec7);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-cadastrar:hover {
+            transform: translateY(-1px);
+            background: linear-gradient(90deg, #603ba3, #754db6);
+            box-shadow: 0 4px 12px rgba(112, 73, 184, 0.3);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .login-link a {
+            color: #7049b8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .cadastro-container {
+                flex-direction: column;
+            }
+
+            .welcome {
+                width: 100%;
+                min-height: 180px;
+                padding: 30px;
+            }
+
+            .cadastro-form {
+                width: 100%;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cadastro-container">
+
+        <!-- PAINEL ROXO ESQUERDO -->
+        <div class="welcome">
+            <span class="plus plus-1">+</span>
+            <span class="plus plus-2">+</span>
+            <span class="plus plus-3">+</span>
+
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+
+            <h1>Bem vindo a PRATICU!</h1>
+            <p>Cadastre-se para criar sua conta e ter acesso completo ao sistema de treinos.</p>
+        </div>
+
+        <!-- FORMULÁRIO DE CADASTRO -->
+        <div class="cadastro-form">
+            <h2>Criar Conta</h2>
+
+            <form id="formCadastro">
+                <input type="text" id="nome" class="form-control" placeholder="Nome completo" required>
+
+                <input type="email" id="email" class="form-control" placeholder="E-mail" required>
+
+                <input type="password" id="senha" class="form-control" placeholder="Senha" required>
+
+                <input type="password" id="confirmar" class="form-control" placeholder="Confirmar senha" required>
+
+                <button type="submit" class="btn-cadastrar">
+                    Criar conta
+                </button>
+            </form>
+
+            <div class="login-link">
+                Já possui uma conta?
+                <a href="index.html">Entrar aqui</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT JS -->
+    <script>
+        document.getElementById("formCadastro").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value;
+            const confirmar = document.getElementById("confirmar").value;
+
+            // Validação simples de senha
+            if (senha !== confirmar) {
+                alert("As senhas não coincidem!");
+                return;
+            }
+
+            // Busca os usuários cadastrados
+            let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+            // Verifica duplicidade de email
+            const usuarioExistente = usuarios.find(function(usuario) {
+                return usuario.email === email;
+            });
+
+            if (usuarioExistente) {
+                alert("Este e-mail já está cadastrado!");
+                return;
+            }
+
+            // Registra o novo usuário
+            const novoUsuario = {
+                nome: nome,
+                email: email,
+                senha: senha
+            };
+
+            usuarios.push(novoUsuario);
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+            alert("Conta criada com sucesso!");
+            window.location.href = "index.html";
+        });
+    </script>
+
+</body>
+</html>

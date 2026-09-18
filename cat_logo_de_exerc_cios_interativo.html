@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRATICU - Catálogo de Treinos</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        praticu: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #9333ea 100%);
+            min-height: 100vh;
+        }
+
+        /* PRATICU Background Gradient Pattern */
+        .praticu-bg-pattern {
+            background-color: #a78bfa;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(147, 51, 234, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.3) 0%, transparent 60%);
+        }
+
+        /* Decorative Background Elements from Image */
+        .bg-dots {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1.5px, transparent 1.5px);
+            background-size: 12px 12px;
+        }
+
+        .card-shadow {
+            box-shadow: 0 20px 40px -15px rgba(109, 40, 217, 0.25);
+        }
+
+        .modal-backdrop-custom {
+            background-color: rgba(76, 29, 149, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Smooth custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ede9fe;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="praticu-bg-pattern text-gray-800 p-4 sm:p-6 lg:p-10 flex flex-col items-center justify-between selection:bg-praticu-600 selection:text-white">
+
+    <div class="w-full max-w-6xl mx-auto mb-8 sm:mb-10">
+        <!-- Banner Container with PRATICU split style -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 card-shadow overflow-hidden relative flex flex-col md:flex-row items-center justify-between gap-6 border border-white/60">
+            <!-- Decorative Accent Circle Top Right -->
+            <div class="absolute -right-16 -bottom-16 w-48 h-48 rounded-full border-[20px] border-praticu-100/60 pointer-events-none"></div>
+            <div class="absolute -right-8 -bottom-8 w-32 h-32 rounded-full border-[10px] border-praticu-200/40 pointer-events-none"></div>
+
+            <div class="flex items-center gap-4 z-10 w-full md:w-auto">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-praticu-600 text-white flex items-center justify-center text-2xl sm:text-3xl font-black shadow-lg shadow-praticu-600/30 shrink-0">
+                    <i class="fa-solid fa-dumbbell"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">PRATICU<span class="text-praticu-600"></span></h1>
+                        <span class="bg-praticu-100 text-praticu-700 text-xs font-bold px-2.5 py-0.5 rounded-full">Treinos</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-500 font-medium mt-0.5">Escolha seu treino do dia.</p>
+                </div>
+            </div>
+
+            <!-- Quick Filter Badges -->
+            <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none z-10">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider hidden lg:inline mr-1">Atalhos:</span>
+                <button onclick="scrollToCard('peito')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-praticu-50 hover:bg-praticu-100 text-praticu-700 transition whitespace-nowrap border border-praticu-100">
+                    Peito
+                </button>
+                <button onclick="scrollToCard('costas')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-praticu-50 hover:bg-praticu-100 text-praticu-700 transition whitespace-nowrap border border-praticu-100">
+                    Costas
+                </button>
+                <button onclick="scrollToCard('pernas')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-praticu-50 hover:bg-praticu-100 text-praticu-700 transition whitespace-nowrap border border-praticu-100">
+                    Pernas
+                </button>
+                <button onclick="scrollToCard('ombros')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-praticu-50 hover:bg-praticu-100 text-praticu-700 transition whitespace-nowrap border border-praticu-100">
+                    Ombros
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="w-full max-w-6xl mx-auto flex-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="workoutCardsContainer">
+            <!-- Cards will be populated by JS -->
+        </div>
+    </main>
+
+    <div id="workoutModal" class="fixed inset-0 modal-backdrop-custom hidden z-50 flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-white max-w-xl w-full rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden transform scale-95 transition-transform duration-300 border border-praticu-100 max-h-[90vh] flex flex-col" id="modalContainer">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+                <div class="flex items-center gap-3">
+                    <div id="modalIcon" class="w-10 h-10 rounded-xl bg-praticu-100 text-praticu-600 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <div>
+                        <h3 id="modalTitle" class="text-xl font-black text-gray-900">Treino de Peito</h3>
+                        <p id="modalSubtitle" class="text-xs text-gray-500 font-medium">4 Exercícios • Foco em Hipertrofia</p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-gray-100 text-gray-400 hover:text-gray-700 hover:bg-gray-200 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content (Scrollable list of exercises) -->
+            <div class="py-4 overflow-y-auto space-y-3 flex-1 my-2 pr-1" id="modalExerciseList">
+                <!-- Loaded dynamically -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                <div class="text-xs text-gray-500 font-medium flex items-center gap-1.5">
+                    <i class="fa-solid fa-clock text-praticu-600"></i>
+                    <span>Descanso sugerido: 60s - 90s</span>
+                </div>
+                <button onclick="closeModal()" class="px-6 py-2.5 bg-praticu-600 hover:bg-praticu-700 text-white font-bold rounded-xl text-xs transition shadow-lg shadow-praticu-600/30">
+                    Entendido!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="w-full max-w-6xl mx-auto mt-12 text-center text-xs text-white/80 font-medium">
+  
+    </footer>
+
+    <script>
+        // Workout Data Schema
+        const workouts = [
+            {
+                id: "peito",
+                title: "Treino de Peito",
+                description: "Supino reto, supino inclinado, crucifixo e crossover na polia.",
+                icon: "fa-dumbbell",
+                img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80",
+                exercises: [
+                    { name: "Supino Reto com Barra", sets: "4 séries x 10 a 12 reps", tip: "Mantenha as escápulas fechadas e pés firmes no chão." },
+                    { name: "Supino Inclinado com Halteres", sets: "3 séries x 12 reps", tip: "Banco ajustado a 30°-45° para focar no peitoral superior." },
+                    { name: "Crucifixo Reto com Halteres", sets: "3 séries x 12 a 15 reps", tip: "Mantenha os cotovelos levemente flexionados." },
+                    { name: "Crossover na Polia Alta", sets: "4 séries x 15 reps", tip: "Esmague bem o peitoral na fase final de contração." }
+                ]
+            },
+            {
+                id: "costas",
+                title: "Treino de Costas",
+                description: "Puxada frontal, remada baixa, remada curvada e pulley artic.",
+                icon: "fa-child-reaching",
+                img: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=600&q=80",
+                exercises: [
+                    { name: "Puxada Frontal no Pulley", sets: "4 séries x 10 a 12 reps", tip: "Puxe a barra em direção ao topo do peito estufando o tórax." },
+                    { name: "Remada Baixa Triângulo", sets: "3 séries x 12 reps", tip: "Mantenha a coluna ereta sem balançar o tronco." },
+                    { name: "Remada Curvada com Barra", sets: "4 séries x 10 reps", tip: "Tronco inclinado a 45° mantendo a lombar protegida." },
+                    { name: "Pulldown na Polia", sets: "3 séries x 15 reps", tip: "Foco no isolamento e expansão da grande dorsal." }
+                ]
+            },
+            {
+                id: "pernas",
+                title: "Treino de Pernas",
+                description: "Agachamento, leg press 45°, cadeira extensora e mesa flexora.",
+                icon: "fa-person-walking",
+                img: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=600&q=80",
+                exercises: [
+                    { name: "Agachamento Livre com Barra", sets: "4 séries x 8 a 10 reps", tip: "Pés na largura dos ombros e joelhos alinhados com as pontas dos pés." },
+                    { name: "Leg Press 45°", sets: "4 séries x 12 reps", tip: "Nunca trave os joelhos completamente na extensão máxima." },
+                    { name: "Cadeira Extensora", sets: "3 séries x 15 reps", tip: "Segure 1 segundo no pico de contração no topo." },
+                    { name: "Mesa Flexora", sets: "4 séries x 12 reps", tip: "Mantenha o quadril colado no banco sem compensar." }
+                ]
+            },
+            {
+                id: "ombros",
+                title: "Treino de Ombros",
+                description: "Desenvolvimento, elevação lateral, elevação frontal e crucifixo inverso.",
+                icon: "fa-person-rays",
+                img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80",
+                exercises: [
+                    { name: "Desenvolvimento com Halteres", sets: "4 séries x 10 a 12 reps", tip: "Coluna bem apoiada no banco a 90°." },
+                    { name: "Elevação Lateral com Halteres", sets: "4 séries x 12 a 15 reps", tip: "Evite usar o impulso do corpo para subir a carga." },
+                    { name: "Elevação Frontal na Polia", sets: "3 séries x 12 reps", tip: "Suba o cabo até a linha dos olhos com movimento fluido." },
+                    { name: "Crucifixo Inverso na Polia", sets: "3 séries x 15 reps", tip: "Excelente isolamento para deltoide posterior." }
+                ]
+            },
+            {
+                id: "biceps",
+                title: "Treino de Bíceps",
+                description: "Rosca direta, rosca alternada, rosca martelo e rosca concentrada.",
+                icon: "fa-hand-fist",
+                img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=80",
+                exercises: [
+                    { name: "Rosca Direta na Barra W", sets: "4 séries x 10 a 12 reps", tip: "Mantenha os cotovelos fixos ao lado do tronco." },
+                    { name: "Rosca Alternada com Halteres", sets: "3 séries x 12 reps cada lado", tip: "Gire o punho na subida (supinação completa)." },
+                    { name: "Rosca Martelo com Halteres", sets: "3 séries x 12 reps", tip: "Foco na braquial e ganho de espessura de braço." },
+                    { name: "Rosca Concentrada", sets: "3 séries x 12 a 15 reps", tip: "Apoie o cotovelo na parte interna da coxa." }
+                ]
+            },
+            {
+                id: "triceps",
+                title: "Treino de Tríceps",
+                description: "Tríceps pulley corda, tríceps testa, tríceps francês e mergulho no banco.",
+                icon: "fa-bolt",
+                img: "https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?auto=format&fit=crop&w=600&q=80",
+                exercises: [
+                    { name: "Tríceps Pulley Corda", sets: "4 séries x 12 a 15 reps", tip: "Abra a corda no final do movimento para contração máxima." },
+                    { name: "Tríceps Testa com Barra W", sets: "3 séries x 10 a 12 reps", tip: "Desça a barra devagar em direção à testa mantendo cotovelos fechados." },
+                    { name: "Tríceps Francês Unilateral", sets: "3 séries x 12 reps", tip: "Excelente alongamento da cabeça longa do tríceps." },
+                    { name: "Mergulho no Banco", sets: "3 séries x Até a falha", tip: "Mantenha o tronco próximo ao banco ao descer." }
+                ]
+            }
+        ];
+
+        function renderCards() {
+            const container = document.getElementById('workoutCardsContainer');
+            container.innerHTML = '';
+
+            workouts.forEach(item => {
+                const card = document.createElement('div');
+                card.id = `card-${item.id}`;
+                card.className = "bg-white rounded-3xl overflow-hidden card-shadow hover:shadow-2xl transition-all duration-300 border border-white/80 flex flex-col justify-between group";
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Header Image Banner -->
+                        <div class="relative h-44 overflow-hidden bg-praticu-900">
+                            <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/30 to-transparent"></div>
+                            
+                            <!-- Category Badge -->
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-praticu-700 flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid ${item.icon} text-praticu-600"></i>
+                               
+                            </div>
+
+                            <!-- Title over Image -->
+                            <div class="absolute bottom-3 left-4 right-4">
+                                <h2 class="text-xl font-black text-white drop-shadow-md">${item.title}</h2>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-5 sm:p-6">
+                            <p class="text-xs text-gray-500 font-medium leading-relaxed mb-4">
+                                ${item.description}
+                            </p>
+
+                            <!-- Exercises Quick List Tags -->
+                            <div class="space-y-2 pt-2 border-t border-gray-100">
+                                ${item.exercises.slice(0, 3).map(ex => `
+                                    <div class="flex items-center gap-2 text-xs text-gray-700 font-semibold">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-praticu-500 shrink-0"></div>
+                                        <span class="truncate">${ex.name}</span>
+                                    </div>
+                                `).join('')}
+                                ${item.exercises.length > 3 ? `<p class="text-[11px] text-praticu-600 font-bold pl-3.5">+ ${item.exercises.length - 3} mais exercícios</p>` : ''}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Button Footer -->
+                    <div class="p-5 sm:p-6 pt-0">
+                        <button onclick="openModal('${item.id}')" class="w-full py-3 bg-praticu-600 hover:bg-praticu-700 text-white font-bold rounded-2xl text-xs transition-all shadow-md shadow-praticu-600/20 hover:shadow-lg hover:shadow-praticu-600/30 flex items-center justify-center gap-2">
+                            <span>Ver treino</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Modal Controls
+        function openModal(id) {
+            const workout = workouts.find(w => w.id === id);
+            if (!workout) return;
+
+            document.getElementById('modalTitle').innerText = workout.title;
+            document.getElementById('modalSubtitle').innerText = `${workout.exercises.length} Exercícios • Sequência Recomendada`;
+            document.getElementById('modalIcon').innerHTML = `<i class="fa-solid ${workout.icon}"></i>`;
+
+            const listContainer = document.getElementById('modalExerciseList');
+            listContainer.innerHTML = '';
+
+            workout.exercises.forEach((ex, idx) => {
+                const item = document.createElement('div');
+                item.className = "bg-praticu-50/60 p-4 rounded-2xl border border-praticu-100 flex flex-col gap-1";
+                item.innerHTML = `
+                    <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-praticu-600 text-white font-bold flex items-center justify-center text-[10px] shrink-0">${idx + 1}</span>
+                            <h4 class="text-xs sm:text-sm font-bold text-gray-900">${ex.name}</h4>
+                        </div>
+                        <span class="text-[11px] font-bold text-praticu-700 bg-praticu-200/60 px-2.5 py-0.5 rounded-full shrink-0">${ex.sets}</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500 font-medium pl-7 flex items-center gap-1.5 mt-1">
+                        <i class="fa-solid fa-circle-info text-praticu-500 text-[10px]"></i>
+                        <span>${ex.tip}</span>
+                    </p>
+                `;
+                listContainer.appendChild(item);
+            });
+
+            const modal = document.getElementById('workoutModal');
+            const container = document.getElementById('modalContainer');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('workoutModal');
+            const container = document.getElementById('modalContainer');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        function scrollToCard(id) {
+            const card = document.getElementById(`card-${id}`);
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.classList.add('ring-4', 'ring-praticu-400');
+                setTimeout(() => {
+                    card.classList.remove('ring-4', 'ring-praticu-400');
+                }, 1500);
+            }
+        }
+
+        // Initialize App
+        window.onload = function() {
+            renderCards();
+        };
+    </script>
+</body>
+</html>

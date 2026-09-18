@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRATICU - Academia & App de Treinos</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        praticu: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+           body {
+        min-height: 100vh;
+          font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #9333ea 100%);
+            min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+    }
+
+        }
+
+        .praticu-bg-pattern {
+            background-color: #a78bfa;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(147, 51, 234, 0.45) 0%, transparent 40%),
+                radial-gradient(circle at 90% 85%, rgba(124, 58, 237, 0.45) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.35) 0%, transparent 60%);
+        }
+
+        .bg-dots {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1.5px, transparent 1.5px);
+            background-size: 14px 14px;
+        }
+
+        .card-shadow {
+            box-shadow: 0 20px 45px -15px rgba(109, 40, 217, 0.28);
+        }
+
+        .card-shadow-lg {
+            box-shadow: 0 30px 60px -20px rgba(91, 33, 182, 0.35);
+        }
+
+        .modal-backdrop-custom {
+            background-color: rgba(60, 20, 120, 0.65);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ede9fe;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="praticu-bg-pattern min-h-screen flex flex-col justify-between selection:bg-praticu-600 selection:text-white">
+
+    <header class="sticky top-0 z-40 px-4 sm:px-6 lg:px-10 pt-4 pb-2">
+        <nav class="max-w-6xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl px-5 py-3 sm:py-4 card-shadow flex items-center justify-between border border-white/80 transition-all">
+            <!-- Brand Logo -->
+            <button onclick="showPage('landing')" class="flex items-center gap-3 group text-left">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-praticu-600 text-white flex items-center justify-center text-xl font-black shadow-md shadow-praticu-600/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-dumbbell"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">PRATICU<span class="text-praticu-600"></span></span>
+                </div>
+            </button>
+
+
+            <!-- Login Navigation Button -->
+         <div class="flex items-center gap-2.5">
+    <a href="index.html" class="px-5 py-2.5 bg-praticu-600 hover:bg-praticu-700 text-white text-xs font-bold rounded-2xl transition shadow-md shadow-praticu-600/30 flex items-center gap-2">
+        <i class="fa-solid fa-user text-xs"></i>
+        <span>Entrar</span> 
+    </a>
+</div>
+</nav>
+</header>
+
+<main id="landingPage" class="flex-1 transition-all duration-300">
+        
+        <!-- Hero Section -->
+        <section id="inicio" class="px-4 sm:px-6 lg:px-10 py-8 sm:py-12 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto bg-white rounded-3xl sm:rounded-[2.5rem] card-shadow-lg p-6 sm:p-10 lg:p-14 relative overflow-hidden border border-white/90">
+                
+                <!-- Geometric Accents matching PRATICU UI -->
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full border-[30px] border-praticu-100/70 pointer-events-none"></div>
+                <div class="absolute -right-10 -bottom-10 w-52 h-52 rounded-full border-[16px] border-praticu-200/50 pointer-events-none"></div>
+                <div class="absolute top-8 right-12 w-20 h-20 bg-dots opacity-40 pointer-events-none hidden sm:block"></div>
+                <div class="absolute top-12 left-10 tex
+                        <div class="space-y-4 pt-1">
+                            <st-praticu-300 text-xl font-bold pointer-events-none"></div>
+                <div class="absolute bottom-12 left-1/3 text-praticu-300 text-lg font-bold pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                    <!-- Left Text Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-praticu-100 text-praticu-700 text-xs font-extrabold">
+                           
+                          
+                        </div>
+
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-[1.15]">
+                            Evolua seus treinos com a <span class="text-praticu-600 underline decoration-praticu-300 decoration-4">PRATICU!</span>
+                        </h1>
+
+                        <p class="text-gray-600 text-sm sm:text-base font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            A união perfeita entre uma estrutura fitness de alto padrão e uma tecnologia intuitiva de acompanhamento de resultados.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
+                            <button onclick="scrollToSection('planos')" class="w-full sm:w-auto px-8 py-3.5 bg-praticu-600 hover:bg-praticu-700 text-white font-extrabold text-sm rounded-2xl transition shadow-xl shadow-praticu-600/30 text-center flex items-center justify-center gap-2">
+                                <span>Conhecer Planos</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                           <a href="cadastro.html" class="w-full sm:w-auto px-8 py-3.5 bg-praticu-50 hover:bg-praticu-100 text-praticu-700 font-extrabold text-sm rounded-2xl transition border border-praticu-200 text-center flex items-center justify-center gap-2">
+    <i class="fa-solid fa-user text-praticu-600"></i>
+    <span>Criar Conta</span>
+</a>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Visual Card -->
+                  
+        
+                <!-- Workout Grid -->
+              
+                    <!-- Loaded via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="planos" class="px-4 sm:px-6 lg:px-10 py-8 sm:py-12">
+            <div class="max-w-6xl mx-auto space-y-8">
+                <div class="text-center space-y-3">
+                    <span class="px-3.5 py-1.5 rounded-full bg-white/90 text-praticu-700 text-xs font-black shadow-sm inline-block">
+                        ESCOLHA SEU PLANO
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">4 Opções para o Seu Objetivo</h2>
+                    <p class="text-white/80 text-xs sm:text-sm max-w-xl mx-auto font-medium">Selecione o plano ideal para a sua rotina de treinos na PRATICU.</p>
+                </div>
+
+                <!-- 4 Plans Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Plano 1: Mensal -->
+                    <div class="bg-white rounded-3xl p-6 card-shadow border border-white/90 flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <span class="text-[10px] font-extrabold text-gray-400 uppercase tracking-wider">Flexível</span>
+                            <h3 class="text-xl font-black text-gray-900">Mensal</h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-praticu-700">R$129,90</span>
+                                <span class="text-xs text-gray-500 font-semibold">/ mês</span>
+                            </div>
+                            <ul class="space-y-2.5 pt-4 border-t border-gray-100 text-xs text-gray-600 font-medium">
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                            </ul>
+                        </div>
+                        <button onclick="showPage('login')" class="w-full py-3 bg-praticu-100 hover:bg-praticu-200 text-praticu-700 font-extrabold rounded-2xl text-xs transition">
+                            Escolher Plano
+                        </button>
+                    </div>
+
+                    <!-- Plano 2: Trimestral -->
+                    <div class="bg-white rounded-3xl p-6 card-shadow border border-white/90 flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <span class="text-[10px] font-extrabold text-gray-400 uppercase tracking-wider">Iniciante</span>
+                            <h3 class="text-xl font-black text-gray-900">Trimestral</h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-praticu-700">R$249,90</span>
+                                <span class="text-xs text-gray-500 font-semibold">/ 3 meses</span>
+                            </div>
+                            <ul class="space-y-2.5 pt-4 border-t border-gray-100 text-xs text-gray-600 font-medium">
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                        </div>
+                        <button onclick="showPage('login')" class="w-full py-3 bg-praticu-100 hover:bg-praticu-200 text-praticu-700 font-extrabold rounded-2xl text-xs transition">
+                            Escolher Plano
+                        </button>
+                    </div>
+
+                    <!-- Plano 3: Semestral (Mais Vendido) -->
+                    <div class="bg-gradient-to-b from-white to-praticu-50 rounded-3xl p-6 card-shadow-lg border-2 border-praticu-500 flex flex-col justify-between space-y-6 relative">
+                       
+                        <div class="space-y-4 pt-1">
+                            <span class="text-[10px] font-extrabold text-praticu-600 uppercase tracking-wider">Recomendado</span>
+                            <h3 class="text-xl font-black text-gray-900">Semestral</h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-praticu-700">R$499,90</span>
+                                <span class="text-xs text-gray-500 font-semibold">/ 6 meses</span>
+                            </div>
+                            <ul class="space-y-2.5 pt-4 border-t border-praticu-100 text-xs text-gray-700 font-semibold">
+                                  <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                            </ul>
+                        </div>
+                        <button onclick="showPage('login')" class="w-full py-3 bg-praticu-600 hover:bg-praticu-700 text-white font-black rounded-2xl text-xs transition shadow-lg shadow-praticu-600/30">
+                            Escolher Plano
+                        </button>
+                    </div>
+
+                    <!-- Plano 4: Anual -->
+                    <div class="bg-white rounded-3xl p-6 card-shadow border border-white/90 flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <span class="text-[10px] font-extrabold text-gray-400 uppercase tracking-wider">Melhor Valor</span>
+                            <h3 class="text-xl font-black text-gray-900">Anual</h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-praticu-700">R$1099,90</span>
+                                <span class="text-xs text-gray-500 font-semibold">/ 12 meses</span>
+                            </div>
+                            <ul class="space-y-2.5 pt-4 border-t border-gray-100 text-xs text-gray-600 font-medium">
+                                  <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                                <li class="flex items-center gap-2"><i class="   "></i>     </li>
+                        </div>
+                        <button onclick="showPage('login')" class="w-full py-3 bg-praticu-100 hover:bg-praticu-200 text-praticu-700 font-extrabold rounded-2xl text-xs transition">
+                            Escolher Plano
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+  
+    </script>
+</body>
+</html>
